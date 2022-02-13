@@ -14,10 +14,14 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.black87,
-        child: controller.obx(
-          (data) => HomePicks(homeData: data),
-          onLoading: const Center(child: CircularProgressIndicator()),
-        ));
+        child: controller.obx((data) => HomePicks(homeData: data),
+            onLoading: const Center(child: CircularProgressIndicator()),
+            onError: (error) => CustomButtonWidget(
+                  title: "Reload",
+                  onPressed: () {
+                    controller.getDashboardDataFromBackend();
+                  },
+                )));
   }
 }
 
@@ -42,9 +46,9 @@ class HomePicks extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              CustomButtonWidget(title: "FIND PROPERTY"),
-              CustomButtonWidget(title: "POST A PROPERTY")
+            children: [
+              CustomButtonWidget(title: "FIND PROPERTY", onPressed: () {}),
+              CustomButtonWidget(title: "POST A PROPERTY", onPressed: () {})
             ],
           ),
         ),
