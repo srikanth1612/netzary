@@ -9,7 +9,7 @@ class Routes {
     return [
       GetPage(
           name: AppRoutes.dashboard,
-          page: () => DashBoardView(),
+          page: () => const DashBoardView(),
           bindings: [DashboardBinding()])
     ];
   }

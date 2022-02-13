@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:netzary/Models/dashboard_home_model.dart';
+import 'package:netzary/models/dashboard_home_model.dart';
 import 'package:netzary/dasboard/home_provider.dart';
 
 class HomeController extends GetxController with StateMixin<dynamic> {
@@ -20,7 +20,7 @@ class HomeController extends GetxController with StateMixin<dynamic> {
       try {
         DashboardHomeModel jsonData =
             DashboardHomeModel.fromJson(jsonDecode(value));
-
+        segregatingData(jsonData);
         change(jsonData, status: RxStatus.success());
       } catch (e) {
         change(null, status: RxStatus.error(e.toString()));
